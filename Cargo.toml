@@ -1,0 +1,8 @@
+[package]
+name = "consoletimer"
+version = "0.1.0"
+authors = ["arthrp"]
+
+[dependencies]
+ncurses = "5.97.0"
+eventual = "0.1.7"
