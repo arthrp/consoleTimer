@@ -49,7 +49,7 @@ fn run(args: &Vec<String>) {
 
 fn print_centered_message(rows: &i32,cols: &i32, msg: &str) {
         clear();
-        mvprintw(rows/2, cols/2, &format!("{}", msg));
+        mvprintw(rows/2, cols/2, &msg);
         refresh();
 }
 
