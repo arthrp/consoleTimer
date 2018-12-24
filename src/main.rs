@@ -31,16 +31,14 @@ fn run(args: &Vec<String>) {
     let timer = Timer::new();
     let ticks = timer.interval_ms(1000).iter();
 
+    print_centered_message(&rows,&cols,&"Starting!");
     let mut i = i32::from_str(&args[1]).unwrap();
     for _ in ticks {
         if(i < 0){
             break;
         }
         
-        clear();
-        // execute code once a second, send results via `tx`
-        mvprintw(rows/2, cols/2, &format!("{}s", i));
-        refresh();
+        print_centered_message(&rows,&cols,&format!("{}s", i));
 
         i -= 1;
     }
@@ -48,6 +46,13 @@ fn run(args: &Vec<String>) {
     getch();
     endwin();
 }
+
+fn print_centered_message(rows: &i32,cols: &i32, msg: &str) {
+        clear();
+        mvprintw(rows/2, cols/2, &format!("{}", msg));
+        refresh();
+}
+
 
 fn print_usage() {
     println!("Usage: consoletimer [time in seconds]");
