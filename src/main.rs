@@ -1,4 +1,5 @@
 #![allow(unused_parens)]
+#![allow(non_snake_case)]
 
 extern crate ncurses;
 extern crate eventual;
@@ -47,9 +48,10 @@ fn run(args: &Vec<String>) {
     endwin();
 }
 
-fn print_centered_message(rows: &i32,cols: &i32, msg: &str) {
+fn print_centered_message(rows: &i32, cols: &i32, msg: &str) {
         clear();
-        mvprintw(rows/2, cols/2, &msg);
+        let posX : i32 = cols/2 - ((msg.len()/2) as i32);
+        mvprintw(rows/2, posX, &msg);
         refresh();
 }
 
