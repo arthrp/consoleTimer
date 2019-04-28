@@ -33,7 +33,8 @@ fn run(args: &Vec<String>) {
     let ticks = timer.interval_ms(1000).iter();
 
     print_centered_message(&rows,&cols,&"Starting!");
-    let mut i = i32::from_str(&args[1]).unwrap();
+    let seconds_count = i32::from_str(&args[1]).unwrap();
+    let mut i = seconds_count;
     for _ in ticks {
         if(i < 0){
             break;
@@ -43,6 +44,8 @@ fn run(args: &Vec<String>) {
 
         i -= 1;
     }
+
+    print_centered_message(&rows, &cols, &format!("Finished after {}s", seconds_count));
 
     getch();
     endwin();
