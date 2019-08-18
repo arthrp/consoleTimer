@@ -1,8 +1,10 @@
-FROM rust:1.31
-
+FROM rust:1.37 AS builder
 WORKDIR /usr/src/consoletimer
 COPY . .
+RUN cargo build --release
 
-RUN cargo install --path .
+FROM alpine:latest
+WORKDIR /root/
+COPY --from=builder /usr/src/consoletimer/target/release/consoletimer .
 
-ENTRYPOINT ["consoletimer"]
+ENTRYPOINT ["./consoletimer"]
