@@ -5,3 +5,4 @@ os:
 - linux
 script:
 - cargo build --release
+- docker build -t consoletimer .
