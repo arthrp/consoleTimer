@@ -6,3 +6,4 @@ os:
 script:
 - cargo build --release
 - docker build -t consoletimer .
+- docker run consoletimer
