@@ -3,11 +3,13 @@
 
 extern crate ncurses;
 extern crate eventual;
+extern crate regex;
 
 use ncurses::*;
 use eventual::Timer;
 use std::env;
 use std::str::FromStr;
+use regex::Regex;
 
 fn main() {
     let args : Vec<String> = env::args().collect();
@@ -23,6 +25,12 @@ fn main() {
 fn run(args: &Vec<String>) {
     let mut cols = 0;
     let mut rows = 0;
+
+    let seconds_or_none = get_seconds(&args[1]);
+    if(seconds_or_none.is_none()){
+        print_usage();
+        return;
+    }
     
     initscr();
     curs_set(CURSOR_VISIBILITY::CURSOR_INVISIBLE);
@@ -33,7 +41,8 @@ fn run(args: &Vec<String>) {
     let ticks = timer.interval_ms(1000).iter();
 
     print_centered_message(&rows,&cols,&"Starting!");
-    let seconds_count = i32::from_str(&args[1]).unwrap();
+
+    let seconds_count = seconds_or_none.unwrap();
     let mut i = seconds_count;
     for _ in ticks {
         if(i < 0){
@@ -58,6 +67,24 @@ fn print_centered_message(rows: &i32, cols: &i32, msg: &str) {
         refresh();
 }
 
+fn get_seconds(time_string: &str) -> Option<i32> {
+    let num_re = Regex::new(r"^(\d+)$").unwrap();
+    let mins_re = Regex::new(r"^(\d+)m$").unwrap();
+
+    if(num_re.is_match(time_string)){
+        let c = num_re.captures(time_string).unwrap();
+        let number = i32::from_str(&c[1]).unwrap();
+        return Some(number);
+    }
+
+    if(mins_re.is_match(time_string)){
+        let c = mins_re.captures(time_string).unwrap();
+        let seconds = i32::from_str(&c[1]).unwrap();
+        return Some(seconds*60);
+    }
+
+    return None;
+}
 
 fn print_usage() {
     println!("Usage: consoletimer [time in seconds]");

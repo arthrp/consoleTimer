@@ -1,8 +1,9 @@
 [package]
 name = "consoletimer"
-version = "0.1.0"
+version = "0.1.1"
 authors = ["arthrp"]
 
 [dependencies]
 ncurses = "5.97.0"
 eventual = "0.1.7"
+regex = "1.2.1"
