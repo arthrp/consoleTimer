@@ -2,6 +2,11 @@
 name = "consoletimer"
 version = "0.1.1"
 authors = ["arthrp"]
+license = "GPL-3.0-only"
+description = "Simple timer for your terminal"
+homepage = "https://github.com/arthrp/consoleTimer"
+repository = "https://github.com/arthrp/consoleTimer"
+readme = "README.md"
 
 [dependencies]
 ncurses = "5.97.0"
