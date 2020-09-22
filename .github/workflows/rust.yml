@@ -28,3 +28,4 @@ jobs:
         TOKEN: ${{ secrets.TOKEN }}
     - name: Publish
       run: cargo publish
+      if: contains(github.event.head_commit.message, '[publish]')
