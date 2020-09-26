@@ -1,4 +1,4 @@
-# consoleTimer [![Build Status](https://travis-ci.org/arthrp/consoleTimer.svg?branch=master)](https://travis-ci.org/arthrp/consoleTimer)
+# consoleTimer [![Build Status](https://travis-ci.org/arthrp/consoleTimer.svg?branch=master)](https://travis-ci.org/arthrp/consoleTimer) [![Crates.io](https://img.shields.io/crates/v/consoletimer.svg)](https://crates.io/crates/consoletimer)
 
 Simple timer that allows you to initiate countdown from N seconds. 
 
