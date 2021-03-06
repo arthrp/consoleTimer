@@ -4,12 +4,14 @@
 extern crate ncurses;
 extern crate eventual;
 extern crate regex;
+extern crate chrono;
 
 use ncurses::*;
 use eventual::Timer;
 use std::env;
 use std::str::FromStr;
 use regex::Regex;
+use chrono::prelude::*;
 
 fn main() {
     let args : Vec<String> = env::args().collect();
@@ -54,7 +56,8 @@ fn run(args: &Vec<String>) {
         i -= 1;
     }
 
-    print_centered_message(&rows, &cols, &format!("Finished after {}s", seconds_count));
+    let finish_time = Local::now().format("%Y-%m-%d %H:%M:%S").to_string();
+    print_centered_message(&rows, &cols, &format!("Finished after {}s at {}", seconds_count, finish_time));
 
     getch();
     endwin();
