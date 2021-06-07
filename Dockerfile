@@ -1,4 +1,4 @@
-FROM rust:1.46 AS builder
+FROM rust:1.52 AS builder
 WORKDIR /usr/src/consoletimer
 COPY . .
 RUN cargo build --release
