@@ -1,8 +1,0 @@
-language: rust
-rust:
-- stable
-os:
-- linux
-script:
-- cargo build --release
-- docker build -t consoletimer .
