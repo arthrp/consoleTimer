@@ -4,6 +4,7 @@ version = "0.4.0"
 authors = ["arthrp"]
 license = "GPL-3.0-only"
 description = "Simple timer for your terminal"
+keywords = ["cli"]
 homepage = "https://github.com/arthrp/consoleTimer"
 repository = "https://github.com/arthrp/consoleTimer"
 readme = "README.md"
